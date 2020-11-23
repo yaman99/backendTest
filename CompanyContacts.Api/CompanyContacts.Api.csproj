@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompanyContacts.Appilication\CompanyContacts.Appilication.csproj" />
+    <ProjectReference Include="..\CompanyContacts.Core\CompanyContacts.Core.csproj" />
+    <ProjectReference Include="..\CompanyContacts.DAL\CompanyContacts.DAL.csproj" />
+  </ItemGroup>
+
+
+</Project>

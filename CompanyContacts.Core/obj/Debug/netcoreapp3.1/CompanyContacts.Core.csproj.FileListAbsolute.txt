@@ -1,0 +1,9 @@
+D:\Repos\backendTest\CompanyContacts.Core\bin\Debug\netcoreapp3.1\CompanyContacts.Core.deps.json
+D:\Repos\backendTest\CompanyContacts.Core\bin\Debug\netcoreapp3.1\CompanyContacts.Core.dll
+D:\Repos\backendTest\CompanyContacts.Core\bin\Debug\netcoreapp3.1\CompanyContacts.Core.pdb
+D:\Repos\backendTest\CompanyContacts.Core\obj\Debug\netcoreapp3.1\CompanyContacts.Core.csprojAssemblyReference.cache
+D:\Repos\backendTest\CompanyContacts.Core\obj\Debug\netcoreapp3.1\CompanyContacts.Core.AssemblyInfoInputs.cache
+D:\Repos\backendTest\CompanyContacts.Core\obj\Debug\netcoreapp3.1\CompanyContacts.Core.AssemblyInfo.cs
+D:\Repos\backendTest\CompanyContacts.Core\obj\Debug\netcoreapp3.1\CompanyContacts.Core.csproj.CoreCompileInputs.cache
+D:\Repos\backendTest\CompanyContacts.Core\obj\Debug\netcoreapp3.1\CompanyContacts.Core.dll
+D:\Repos\backendTest\CompanyContacts.Core\obj\Debug\netcoreapp3.1\CompanyContacts.Core.pdb
