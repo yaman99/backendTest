@@ -18,11 +18,11 @@ namespace CompanyContacts.Appilication.Companies.Commands.InsertCompany
 
     public class InsertCompanyCommandHandler : IRequestHandler<InsertCompanyCommand , Result>
     {
-        private readonly ICompanyRepository _company;
+        private readonly ICompanyRepository _companyRepository;
 
         public InsertCompanyCommandHandler(ICompanyRepository company)
         {
-            _company = company;
+            _companyRepository = company;
         }
 
         public async Task<Result> Handle(InsertCompanyCommand request, CancellationToken cancellationToken)
@@ -33,7 +33,7 @@ namespace CompanyContacts.Appilication.Companies.Commands.InsertCompany
                 NumOfEmployees = request.NumOfEmployees
             };
 
-            var result = await _company.AddCompany(company);
+            var result = await _companyRepository.AddCompany(company);
 
             if (result)
                 return Result.Success("Company Inserted");

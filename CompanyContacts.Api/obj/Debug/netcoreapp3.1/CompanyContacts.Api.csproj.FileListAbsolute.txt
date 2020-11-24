@@ -49,3 +49,11 @@ D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\CompanyContacts
 D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\CompanyContacts.DAL.pdb
 D:\Repos\backendTest\CompanyContacts.Api\obj\Debug\netcoreapp3.1\CompanyContacts.Api.MvcApplicationPartsAssemblyInfo.cs
 D:\Repos\backendTest\CompanyContacts.Api\obj\Debug\netcoreapp3.1\CompanyContacts.Api.csproj.CopyComplete
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\CompanyContacts.Api.xml
+D:\Repos\backendTest\CompanyContacts.Api\obj\Debug\netcoreapp3.1\CompanyContacts.Api.xml
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Repos\backendTest\CompanyContacts.Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

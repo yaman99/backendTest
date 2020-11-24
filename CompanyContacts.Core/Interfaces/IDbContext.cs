@@ -9,5 +9,6 @@ namespace CompanyContacts.Core.Interfaces
     public interface IDbContext
     {
         IMongoCollection<Company> Company { get; }
+        IMongoCollection<Contact> Contact { get; }
     }
 }

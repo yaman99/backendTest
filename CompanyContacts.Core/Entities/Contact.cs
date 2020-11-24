@@ -12,6 +12,7 @@ namespace CompanyContacts.Core.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Company> Companies{ get; set; }
+        public List<Company> Companies{ get; set; }
+
     }
 }

@@ -26,5 +26,12 @@ namespace CompanyContacts.DAL.Common
                 return _database.GetCollection<Company>("Company");
             }
         }
+        public IMongoCollection<Contact> Contact
+        {
+            get
+            {
+                return _database.GetCollection<Contact>("Contact");
+            }
+        }
     }
 }

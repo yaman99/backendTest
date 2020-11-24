@@ -21,7 +21,8 @@ namespace CompanyContacts.DAL
             });
 
             services.AddSingleton<IDatabaseSettings>(x => x.GetRequiredService<IOptions<DatabaseSettings>>().Value);
-            services.AddSingleton<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<IContactRepository, ContactRepository>();
             return services;
         }
     }
