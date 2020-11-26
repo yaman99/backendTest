@@ -15,6 +15,7 @@ namespace CompanyContacts.Core.Interfaces.Repos
         Task<bool> removeCompany(string id);
         Task<bool> UpdateCompanyContact(string companyId , ContactVM contact);
         Task<bool> DeleteCompanyContact(string contactId, string companyId);
+        bool IsUserExist(string Name);
 
     }
 }

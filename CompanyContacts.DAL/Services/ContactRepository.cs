@@ -36,6 +36,14 @@ namespace CompanyContacts.DAL.Services
             return await _context.Contact.Find(_ => true).ToListAsync();
         }
 
+        public bool IsUserExist(string Name)
+        {
+            var result = _context.Contact.Find(x => x.Name == Name).CountDocuments();
+            if (result == 1)
+                return false;
+            return true;
+        }
+
         public Task<bool> UpdateContact(string id)
         {
             throw new NotImplementedException();

@@ -158,5 +158,12 @@ namespace CompanyContacts.DAL.Services
             return false;
         }
 
+        public bool IsUserExist(string Name)
+        {
+            var result =  _context.Company.Find(x => x.Name == Name).CountDocuments();
+            if (result == 1)
+                return false;
+            return true;
+        }
     }
 }

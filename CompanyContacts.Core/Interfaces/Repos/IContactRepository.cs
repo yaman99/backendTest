@@ -12,5 +12,7 @@ namespace CompanyContacts.Core.Interfaces.Repos
         Task<IEnumerable<Contact>> GetContacts();
         Task<bool> UpdateContact(string id);
         Task<bool> DeleteContact(string id);
+        bool IsUserExist(string Name);
+
     }
 }
