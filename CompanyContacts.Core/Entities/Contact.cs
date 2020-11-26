@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using CompanyContacts.Core.Models;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,8 @@ namespace CompanyContacts.Core.Entities
         public string Name { get; set; }
         public List<Company> Companies{ get; set; }
 
+        [BsonExtraElements]
+        [BsonIgnoreIfNull]
+        public Dictionary<string, Object> OtherData { get; set; }
     }
 }

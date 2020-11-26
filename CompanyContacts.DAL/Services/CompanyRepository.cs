@@ -8,6 +8,7 @@ using CompanyContacts.DAL.Common;
 using Microsoft.Extensions.Options;
 using CompanyContacts.Core.Entities;
 using CompanyContacts.Core.Models;
+using MongoDB.Bson;
 
 namespace CompanyContacts.DAL.Services
 {
@@ -54,6 +55,7 @@ namespace CompanyContacts.DAL.Services
 
         public async Task<CompanyContactVM> GetCompanyContract(string companyId)
         {
+            // Trying To Make It Join With MongoDb insted of this implementation 
 
             var company = await _context.Company.Find(x => x.Id == companyId).FirstAsync();
             var contacts = await _context.Contact.Find(_ => true).ToListAsync();
@@ -66,7 +68,7 @@ namespace CompanyContacts.DAL.Services
                 {
                     if (companyContact.Id == company.Id)
                     {
-                        companyContacts.Add(new ContactVM { Id = contact.Id, Name = contact.Name });
+                        companyContacts.Add(new ContactVM { Id = contact.Id, Name = contact.Name  , OtherData = contact.OtherData});
                     }
                 }
             }
@@ -82,11 +84,8 @@ namespace CompanyContacts.DAL.Services
 
         public async Task<bool> UpdateCompanyContact(string companyId , ContactVM contactBody)
         {
-            // Trying To Make It Join With MongoDb insted of this implementation 
-
             var contact = await _context.Contact.Find(x => x.Id == contactBody.Id).FirstAsync();
-
-            Contact TargetedContact = new Contact();
+            List<Company> newCompany = new List<Company>();
 
             if (contact.Id == contactBody.Id)
             {
@@ -94,33 +93,55 @@ namespace CompanyContacts.DAL.Services
                 {
                     if (companyContact.Id == companyId)
                     {
-                        TargetedContact = contact;
+                        contact.Companies.Remove(companyContact);
+                        newCompany.Add(companyContact);
+
+                        var data = new Contact
+                        {
+                            Id = ObjectId.GenerateNewId().ToString(),
+                            Name = contactBody.Name,
+                            OtherData = contactBody.OtherData,
+                            Companies = newCompany
+                        };
+
+                        await _context.Contact.InsertOneAsync(data);
+
+                        var result = UpdateContact(contact);
+
+                        return true;
                     }
                 }
             }
+            return false;
+        }
 
+        private async Task<bool> UpdateContact(Contact contact)
+        {
             var filter = Builders<Contact>.Filter
-                            .Eq(s => s.Id, TargetedContact.Id);
+                            .Eq(x => x.Id, contact.Id);
+
             var update = Builders<Contact>.Update
-                            .Set(s => s.Name, contactBody.Name);
+                            .Set(s => s.Companies, contact.Companies);
 
-            var result = await _context.Contact.UpdateOneAsync(filter, update);
+            await _context.Contact.UpdateOneAsync(filter, update);
 
-            return result.IsAcknowledged;
+            return true;
+
         }
 
         public async Task<bool> DeleteCompanyContact(string contactId , string companyId)
         {
-            var contact = await _context.Contact.Find(x => x.Id == contactId).FirstAsync();
-            List<Company> Companies = contact.Companies;
+            var contact = await _context.Contact.Find(x => x.Id == contactId)
+                                                .Project(x=>x.Companies)
+                                                .FirstAsync();
 
-            if (contact.Id == contactId)
+            if (contact != null)
             {
-                foreach (var companyContact in contact.Companies)
+                foreach (var companyContact in contact)
                 {
                     if (companyContact.Id == companyId)
                     {
-                        Companies.Remove(companyContact);
+                        contact.Remove(companyContact);
                         break;
                     }
                 }
@@ -129,7 +150,7 @@ namespace CompanyContacts.DAL.Services
                             .Eq(x => x.Id , contactId);
 
                 var update = Builders<Contact>.Update
-                                .Set(s => s.Companies, Companies);
+                                .Set(s => s.Companies, contact);
 
                 var result = await _context.Contact.UpdateOneAsync(filter, update);
                 return true;

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CompanyContacts.Appilication.Contacts.Commands.Queries.GetContact
+namespace CompanyContacts.Appilication.Contacts.Queries.GetContact
 {
     public class GetContactQuery : IRequest<IEnumerable<Contact>>
     {

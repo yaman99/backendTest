@@ -1,5 +1,5 @@
 ﻿using CompanyContacts.Appilication.Contacts.Commands.InsertContact;
-using CompanyContacts.Appilication.Contacts.Commands.Queries.GetContact;
+using CompanyContacts.Appilication.Contacts.Queries.GetContact;
 using CompanyContacts.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;

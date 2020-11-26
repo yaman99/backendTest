@@ -4,6 +4,7 @@ using CompanyContacts.Core.Interfaces.Repos;
 using CompanyContacts.Core.Models;
 using MediatR;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,17 @@ namespace CompanyContacts.Appilication.Contacts.Commands.InsertContact
     {
         public string Name { get; set; }
         public List<Company> Companies { get; set; }
+
+        [BsonIgnoreIfNull]
+        [BsonExtraElements]
+        public Dictionary<string, Object> OtherData { get; set; }
     }
 
     public class InsertContactCommandHandler : IRequestHandler<InsertContactCommand, Result>
     {
         private readonly IContactRepository _contactRepository;
 
-        public InsertContactCommandHandler(IContactRepository contactRepository, IMapper mapper)
+        public InsertContactCommandHandler(IContactRepository contactRepository)
         {
             _contactRepository = contactRepository;
         }
@@ -33,7 +38,8 @@ namespace CompanyContacts.Appilication.Contacts.Commands.InsertContact
             var contact = new Contact
             {
                 Name = request.Name,
-                Companies= request.Companies
+                Companies= request.Companies,
+                OtherData = request.OtherData
             };
 
             var result = await _contactRepository.AddContact(contact);

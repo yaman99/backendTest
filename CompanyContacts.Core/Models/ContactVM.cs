@@ -11,5 +11,8 @@ namespace CompanyContacts.Core.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
+        [BsonExtraElements]
+        [BsonIgnoreIfNull]
+        public Dictionary<string, Object> OtherData { get; set; }
     }
 }
