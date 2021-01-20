@@ -1,5 +1,5 @@
 ## .Net Core + MongoDb (NoSql) Backend Test
-* This Solution Built Using N-Tier Crchitecture and CQRS Design Pattern
+* This Solution Built Using N-Tier Architecture and CQRS Design Pattern
 
 ## CQRS Design Pattern
 * Command Query Responsibility Segregation Design Pattern (CQRS) To Separate
